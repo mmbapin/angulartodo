@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "todo-3ee53": {
+      "hosting": {
+        "gymapp": [
+          "todo-3ee53"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "todo-3ee53"
+  }
+}

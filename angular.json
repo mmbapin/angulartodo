@@ -99,8 +99,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "gymapp:build:production",
+            "firebaseProject": "todo-3ee53",
+            "firebaseHostingSite": "todo-3ee53"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
