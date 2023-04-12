@@ -1,25 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { CategoryComponent } from './category/category.component';
 import { TodoComponent } from './todo/todo.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import {
+  provideAnalytics,
+  getAnalytics,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { providePerformance, getPerformance } from '@angular/fire/performance';
+import {
+  provideRemoteConfig,
+  getRemoteConfig,
+} from '@angular/fire/remote-config';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,7 +37,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     CategoryComponent,
     TodoComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,11 +54,11 @@ import { FormsModule } from '@angular/forms';
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [
-    ScreenTrackingService,UserTrackingService
-  ],
-  bootstrap: [AppComponent]
+  providers: [ScreenTrackingService, UserTrackingService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

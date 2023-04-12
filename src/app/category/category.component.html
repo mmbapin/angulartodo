@@ -11,7 +11,7 @@
         <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-inline row">
             <div class="col-md-10 form-group">
                 <input type="text" placeholder="Add New Categories here" name="categoryName"
-                    class="form-control-plaintext drop-shadow">
+                    class="form-control-plaintext drop-shadow" ngModel>
             </div>
             <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">Add</button>
         </form>
