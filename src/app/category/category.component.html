@@ -11,9 +11,11 @@
         <form #f="ngForm" (ngSubmit)="f.form.valid &&  onSubmit(f)" class="form-inline row">
             <div class="col-md-10 form-group">
                 <input type="text" placeholder="Add New Categories here" name="categoryName"
-                    class="form-control-plaintext drop-shadow border-danger" ngModel [(ngModel)]="categoryName" required #category="ngModel" [ngClass]="{'border-danger' : f.submitted && category.invalid}">
+                    class="form-control-plaintext drop-shadow" ngModel [(ngModel)]="categoryName" required
+                    #category="ngModel" [ngClass]="{'border-danger' : f.submitted && category.invalid}">
             </div>
-            <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">{{buttonName}}</button>
+            <button type="submit"
+                class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">{{buttonName}}</button>
             <div class="text-danger ml-3" *ngIf="f.submitted && category.invalid">
                 Category is Required...
             </div>
@@ -31,13 +33,15 @@
                     </div>
                     <div class="cat-tools">
                         <small>
-                            <i class="fa fa-pencil-alt text-success" (click)="onEdit(category.data.category, category.id)"></i>
-                            <i class="fas fa-trash text-danger" (click)="onDelete(category.data.category, category.id)"></i>
+                            <i class="fa fa-pencil-alt text-success"
+                                (click)="onEdit(category.data.category, category.id)"></i>
+                            <i class="fas fa-trash text-danger"
+                                (click)="onDelete(category.data.category, category.id)"></i>
                         </small>
                     </div>
                 </div>
-                <div class="todo-content">
-                    <h3 [style.color] = "category.data.colorCode">{{category.data.category}}</h3>
+                <div class="todo-content" [routerLink]="['/todo', category.id]">
+                    <h3 [style.color]="category.data.colorCode">{{category.data.category}}</h3>
                     <small class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
                 </div>
                 <span class="badge badge-danger">{{category.data.todoCount}} - todos</span>
