@@ -26,22 +26,53 @@ export class CategoryComponent implements OnInit {
     '#B26E63',
     '#C6CAED',
   ];
+
+  categories: Array<any> = [];
+  categoryName: string = '';
+  buttonName: string = 'Add';
+  categoryId: string = '';
+
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+    this.categoryService.getCategories().subscribe((val) => {
+      console.log(val);
+      this.categories = val
+    })
   }
 
   onSubmit(f: NgForm) {
-    let randomNumber = Math.floor(Math.random() * this.color.length);
-    // console.log(f.value);
-    let todoCategory = {
-      category: f.value.categoryName,
-      colorCode: this.color[randomNumber],
-      todoCount: 0,
-    };
-    this.categoryService.saveCategory(todoCategory);
+    if(this.buttonName === 'Add'){
+      let randomNumber = Math.floor(Math.random() * this.color.length);
+      console.log(f);
+      let todoCategory = {
+        category: f.value.categoryName,
+        colorCode: this.color[randomNumber],
+        todoCount: 0,
+      };
+      this.categoryService.saveCategory(todoCategory);
+      f.resetForm();
+    }else if(this.buttonName === 'Edit'){
+      this.categoryService.updateCategory(this.categoryId, f.value.categoryName)
+      f.resetForm()
+      this.buttonName = 'Add';
+    }
+
+  }
+
+  onEdit(category: string, id: string){
+    console.log(category);
+    this.categoryName = category
+    this.buttonName = 'Edit'
+    this.categoryId = id
+  }
+
+
+  onDelete(category: string, id: string){
+    console.log(category);
+    this.categoryService.deleteCategory(id, category)
   }
 }
